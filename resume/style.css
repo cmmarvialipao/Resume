@@ -1,0 +1,144 @@
+:root {
+    --bg: #0d0d2b;
+    --accent: #8e44ff;
+    --accent-light: #c084fc;
+    --text: #e0e7ff;
+    --muted: #94a3b8;
+    --card-bg: #1e1e3f;
+    --shadow: rgba(142, 68, 255, 0.3);
+    --border-radius: 18px;
+  }
+  
+  body {
+    font-family: 'Poppins', sans-serif;
+    margin: 0;
+    background-color: var(--bg);
+    color: var(--text);
+    line-height: 1.6;
+    background-image: radial-gradient(#1a1a3c 1px, transparent 1px);
+    background-size: 30px 30px;
+  }
+  
+  header {
+    text-align: center;
+    padding: 3rem 1rem 2rem;
+    background: linear-gradient(145deg, #1e1e3f, #2a2a5e);
+    border-bottom: 3px solid var(--accent);
+    box-shadow: 0 10px 20px var(--shadow);
+  }
+  
+  header h1 {
+    font-size: 2.7rem;
+    color: var(--accent-light);
+    margin-bottom: 0.5rem;
+  }
+  
+  header p {
+    color: var(--muted);
+    font-size: 1.1rem;
+    max-width: 700px;
+    margin: 0.5rem auto;
+  }
+  
+  section {
+    padding: 2rem 1.5rem;
+    max-width: 1200px;
+    margin: auto;
+  }
+  
+  h2 {
+    color: var(--accent-light);
+    font-size: 1.8rem;
+    margin-bottom: 1rem;
+    border-left: 6px solid var(--accent-light);
+    padding-left: 12px;
+  }
+  
+  .gallery {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 1.5rem;
+  }
+  
+  .card {
+    background: var(--card-bg);
+    border-radius: var(--border-radius);
+    overflow: hidden;
+    box-shadow: 0 12px 30px var(--shadow);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    cursor: pointer;
+    position: relative;
+  }
+  
+  .card:hover {
+    transform: translateY(-10px) scale(1.02);
+    box-shadow: 0 0 30px var(--accent);
+  }
+  
+  .card img {
+    width: 100%;
+    display: block;
+    transition: filter 0.3s ease;
+  }
+  
+  .card:hover img {
+    filter: brightness(1.1) saturate(1.2);
+  }
+  
+  footer {
+    text-align: center;
+    padding: 2rem 1rem;
+    background: #1e1e3f;
+    color: var(--muted);
+    font-size: 0.9rem;
+    border-top: 2px solid var(--accent);
+  }
+  
+  footer a {
+    color: var(--accent-light);
+    text-decoration: none;
+    font-weight: 600;
+    transition: color 0.3s ease;
+  }
+  
+  footer a:hover {
+    color: #fff;
+  }
+  
+  /* Shooting star background option */
+  @keyframes twinkle {
+    0% { opacity: 0.8; }
+    50% { opacity: 0.2; }
+    100% { opacity: 0.8; }
+  }
+  
+  .star {
+    position: absolute;
+    width: 2px;
+    height: 2px;
+    background: white;
+    opacity: 0.8;
+    border-radius: 50%;
+    animation: twinkle 3s infinite;
+    z-index: 0;
+  }
+  
+  /* Float animation */
+  @keyframes float {
+    0% { transform: translateY(0px); }
+    50% { transform: translateY(-5px); }
+    100% { transform: translateY(0px); }
+  }
+  #stars-canvas {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: -1;
+    pointer-events: none;
+  }
+  
+  
+  .card:hover {
+    animation: float 2s ease-in-out infinite;
+  }
+  

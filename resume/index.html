@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Marvi | 2D Game Portfolio</title>
+  <link rel="stylesheet" href="style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+    <canvas id="stars-canvas"></canvas>
+  <header>
+    <h1>🎮 Christel Marvi Alipao's Game Portfolio</h1>
+    <p>Welcome! I'm Marvi, a computer science student with a passion in game designing, development and 2d artist.</p>
+    <p>This space is dedicated to showcasing my original assets, environments, UI elements, and snapshots from the games I’ve created and contributed to. Enjoy exploring!</p>
+  </header>
+
+  <section>
+    <h2>🧍 Characters and assets from personal creative projects</h2>
+    <div class="gallery">
+      <div class="card"><img src="surfergirl.png" alt="Character 1" /></div>
+      <div class="card"><img src="fish.png" alt="Character 2" /></div>
+      <div class="card"><img src="axolotl.png" alt="Character 2" /></div>
+    </div>
+  </section>
+
+  <section>
+    <h2>🌲 Environments and Assets | MellowDwarf </h2>
+    <div class="gallery">
+      <div class="card"><img src="env.png" alt="Tree" /></div>
+      <div class="card"><img src="night.png" alt="House" /></div>
+      <div class="card"><img src="weapon1.png" alt="House" /></div>
+      <div class="card"><img src="plant.png" alt="House" /></div>
+      <div class="card"><img src="tree.png" alt="House" /></div>
+    </div>
+  </section>
+
+  <section>
+    <h2>📸 Game Screenshots</h2>
+    <div class="gallery">
+      <div class="card"><img src="ss1.png" alt="Screenshot 1" /></div>
+      <div class="card"><img src="ss2.png" alt="Screenshot 2" /></div>
+      <div class="card"><img src="ss3.png" alt="Screenshot 2" /></div>
+    </div>
+  </section>
+
+  <footer>
+    <p>Created by Marvi— <a href="https://github.com/cmmarvialipao" target="_blank">GitHub</a></p>
+  </footer>
+  <script>
+    const canvas = document.getElementById('stars-canvas');
+    const ctx = canvas.getContext('2d');
+  
+    function resizeCanvas() {
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+    }
+  
+    window.addEventListener('resize', resizeCanvas);
+    resizeCanvas();
+  
+    const numStars = 150;
+    const stars = [];
+  
+    for (let i = 0; i < numStars; i++) {
+      stars.push({
+        x: Math.random() * canvas.width,
+        y: Math.random() * canvas.height,
+        radius: Math.random() * 1.5 + 0.5,
+        alpha: Math.random(),
+        delta: Math.random() * 0.02 + 0.005
+      });
+    }
+  
+    function drawStars() {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      for (let star of stars) {
+        ctx.beginPath();
+        ctx.arc(star.x, star.y, star.radius, 0, 2 * Math.PI);
+        ctx.fillStyle = `rgba(255, 255, 255, ${star.alpha})`;
+        ctx.fill();
+  
+        // twinkle animation
+        star.alpha += star.delta;
+        if (star.alpha <= 0 || star.alpha >= 1) {
+          star.delta = -star.delta;
+        }
+      }
+      requestAnimationFrame(drawStars);
+    }
+  
+    drawStars();
+  </script>
+  
+</body>
+</html>
